@@ -234,6 +234,12 @@ class electrodomesticos {
                 System.out.println(aux);
             }
 
+            microondas m1=new microondas();
+            System.out.println(m1);
+
+            lavavajillas l1 =new lavavajillas();
+            System.out.println(l1);
+
         }
     }
 
