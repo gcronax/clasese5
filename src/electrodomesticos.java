@@ -1,31 +1,34 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 class electrodomesticos {
-    public static final int precio_default=100;
-    public static final String color_default= "blanco";
-    public static final char consumo_default= 'F';
+    public static final int precio_default = 100;
+    public static final String color_default = "blanco";
+    public static final char consumo_default = 'F';
     int precio;
     String color;
     char consumo;
 
 
-    public electrodomesticos(){
-        this.precio=precio_default;
-        this.color=color_default;
-        this.consumo=consumo_default;
+    public electrodomesticos() {
+        this.precio = precio_default;
+        this.color = color_default;
+        this.consumo = consumo_default;
         precioFinal();
     }
-    public  electrodomesticos(int precio,String color){
-        this.precio=precio;
-        this.color=color;
-        this.consumo=consumo_default;
+
+    public electrodomesticos(int precio, String color) {
+        this.precio = precio;
+        this.color = color;
+        this.consumo = consumo_default;
         comprobarLetraConsumo(consumo);
         precioFinal();
     }
-    public electrodomesticos(int precio, String color, char consumo){
-        this.precio=precio;
-        this.color=color;
-        this.consumo=consumo;
+
+    public electrodomesticos(int precio, String color, char consumo) {
+        this.precio = precio;
+        this.color = color;
+        this.consumo = consumo;
         comprobarColor(color);
         comprobarLetraConsumo(consumo);
         precioFinal();
@@ -58,66 +61,79 @@ class electrodomesticos {
         precioFinal();
     }
 
-    public void comprobarLetraConsumo(char letra){
+    public void comprobarLetraConsumo(char letra) {
 
-        if(letra !='A' && letra !='F'&& letra !='B'&& letra !='D'&& letra !='E'){
-            consumo=consumo_default;
-        }
-
-    }
-    public void comprobarColor(String color){
-        if(color!="blanco"&&color!="negro"&&color!="gris"){
-            color=color_default;
+        if (letra != 'A' && letra != 'F' && letra != 'B' && letra != 'D' && letra != 'E') {
+            consumo = consumo_default;
         }
 
     }
 
-    public void precioFinal(){
-        switch (this.consumo){
+    public void comprobarColor(String color) {
+        if (color != "blanco" && color != "negro" && color != "gris") {
+            color = color_default;
+        }
+
+    }
+
+    public void precioFinal() {
+        switch (this.consumo) {
             case 'A':
-                precio=precio+60;
+                precio = precio + 60;
                 break;
             case 'B':
-                precio=precio+50;
+                precio = precio + 50;
                 break;
             case 'C':
-                precio=precio+40;
+                precio = precio + 40;
                 break;
             case 'D':
-                precio=precio+30;
+                precio = precio + 30;
                 break;
             case 'E':
-                precio=precio+20;
+                precio = precio + 20;
                 break;
             case 'F':
-                precio=precio+10;
+                precio = precio + 10;
                 break;
 
         }
     }
-    class microondas extends electrodomesticos{
 
-        public static final int n_programas=4;
+    @Override
+    public String toString() {
+        return "electrodomesticos{" +
+                "precio=" + precio +
+                ", color='" + color + '\'' +
+                ", consumo=" + consumo +
+                '}';
+    }
+}
+    class microondas extends electrodomesticos {
+
+        public static final int n_programas = 4;
         int precio;
         String color;
         char consumo;
         int aux_n;
 
-        public microondas(){
-            this.precio=super.getPrecio();
-            this.color=super.getColor();
-            this.consumo=super.getConsumo();
-            aux_n=n_programas;
+        public microondas() {
+            this.precio = super.getPrecio();
+            this.color = super.getColor();
+            this.consumo = super.getConsumo();
+            aux_n = n_programas;
         }
-        public  microondas(int precio,String color){
-            this.precio=precio;
-            this.color=color;
-            this.consumo=super.getConsumo();
-            aux_n=n_programas;
+
+        public microondas(int precio, String color) {
+            this.precio = precio;
+            this.color = color;
+            this.consumo = super.getConsumo();
+            aux_n = n_programas;
         }
-        public microondas(int num,int precio, String color, char consumo){
-            super(precio,color,consumo);
-            aux_n=num;
+
+        public microondas(int num, int precio, String color, char consumo) {
+            super(precio, color, consumo);
+            aux_n = num;
         }
 
         public int getAux_n() {
@@ -131,8 +147,8 @@ class electrodomesticos {
         @Override
         public void precioFinal() {
             super.precioFinal();
-            if (aux_n>5){
-                super.setPrecio(precio+40);
+            if (aux_n > 5) {
+                super.setPrecio(precio + 40);
             }
         }
 
@@ -205,13 +221,23 @@ class electrodomesticos {
         }
 
     }
-    public class main{
+
+
+    class main{
         public static void main(String[] args) {
-             microondas a =new microondas();
+            electrodomesticos w;
+            w =new electrodomesticos();
+            electrodomesticos[] a =new electrodomesticos[10];
+            System.out.println(w);
+
+            for (electrodomesticos aux:a){
+                System.out.println(aux);
+            }
+
         }
     }
 
 
 
 
-}
+
