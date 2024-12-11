@@ -227,10 +227,10 @@ class electrodomesticos {
         public static void main(String[] args) {
             electrodomesticos w;
             w =new electrodomesticos(1000,"negro",'A');
-            ArrayList[] a = new ArrayList[10];
+            electrodomesticos[] a = new electrodomesticos[10];
             System.out.println(w);
-
-            for (ArrayList<electrodomesticos> aux:a){
+            a[2]=new electrodomesticos(100,"negro",'F');
+            for (electrodomesticos aux:a){
                 System.out.println(aux);
             }
 
