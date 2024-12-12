@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 class electrodomesticos {
     public static final int precio_default = 100;
     public static final String color_default = "blanco";
@@ -14,7 +11,7 @@ class electrodomesticos {
         this.precio = precio_default;
         this.color = color_default;
         this.consumo = consumo_default;
-        precioFinal();
+
     }
 
     public electrodomesticos(int precio, String color) {
@@ -76,7 +73,7 @@ class electrodomesticos {
 
     }
 
-    public void precioFinal() {
+    public int precioFinal() {
 
         switch (this.consumo) {
             case 'A':
@@ -99,8 +96,8 @@ class electrodomesticos {
                 break;
             default:
                 break;
-
         }
+        return precio;
     }
 
     @Override
@@ -115,7 +112,7 @@ class electrodomesticos {
 class microondas extends electrodomesticos {
 
     public static final int n_programas = 4;
-    int aux_n;
+    private int aux_n;
 
     public microondas() {
         super();
@@ -141,18 +138,19 @@ class microondas extends electrodomesticos {
     }
 
     @Override
-    public void precioFinal() {
-        super.precioFinal();
+    public int precioFinal() {
+
         if (aux_n > 5) {
-            super.setPrecio(precio + 40);
+            precio=precio + 40;
         }
+        return this.precio;
     }
 
     @Override
     public String toString() {
         System.out.println(super.toString());
         return "microndas{" +
-                ", aux_n=" + aux_n +
+                ", aux_nl=" + aux_n +
                 '}';
     }
 
@@ -163,42 +161,36 @@ class microondas extends electrodomesticos {
 
         public static final int n_programas=12;
         
-        int aux_n;
+        private int aux_nl;
 
         public lavavajillas(){
             super();
-            aux_n=n_programas;
+            aux_nl =n_programas;
         }
         public lavavajillas(int precio, String color){
             super(precio,color);
-            aux_n=n_programas;
+            aux_nl =n_programas;
         }
         public lavavajillas(int num, int precio, String color, char consumo){
             super(precio,color,consumo);
-            aux_n=num;
+            this.aux_nl =num;
         }
 
-        public int getAux_n() {
-            return aux_n;
+        public int getAux_nl() {
+            return aux_nl;
         }
 
-        public void setAux_n(int aux_n) {
-            this.aux_n = aux_n;
+        public void setAux_nl(int aux_nl) {
+            this.aux_nl = aux_nl;
         }
 
-        @Override
-        public void precioFinal() {
-            if (aux_n>12){
-            } else if (aux_n<12) {
-            }
 
-        }
 
         @Override
         public String toString() {
             System.out.println(super.toString());
             return "lavavajillas{" +
-                    ", aux_n=" + aux_n +
+                    ", aux_nl=" + aux_nl +
                     '}';
         }
         
@@ -211,12 +203,14 @@ class microondas extends electrodomesticos {
 
             electrodomesticos[] a = new electrodomesticos[10];
             
-            for (int i = 1; i < 10; i++) {
+            for (int i = 0; i < 10; i++) {
                 if(i<5){
-                   a[i]=new lavavajillas(16,400,"negro",'F');
+                   a[i]=new lavavajillas(13,0,"negro",'F');
                 }else{
-                    a[i]=new microondas(16,400,"negro",'F');
+                    a[i]=new microondas(6,0,"negro",'F');
                 }
+
+
             }
             for (int i = 0; i < 10; i++) {
                 System.out.println(a[i]);
