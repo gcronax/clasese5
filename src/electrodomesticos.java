@@ -212,9 +212,11 @@ class microondas extends electrodomesticos {
             electrodomesticos[] a = new electrodomesticos[10];
             
             for (int i = 1; i < 10; i++) {
-                a[0]=new lavavajillas(16,400,"negro",'F');
-
-                a[i]=new lavavajillas();
+                if(i<5){
+                   a[i]=new lavavajillas(16,400,"negro",'F');
+                }else{
+                    a[i]=new microondas(16,400,"negro",'F');
+                }
             }
             for (int i = 0; i < 10; i++) {
                 System.out.println(a[i]);
