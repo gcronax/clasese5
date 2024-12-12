@@ -2,9 +2,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 class electrodomesticos {
-    private static final int precio_default = 100;
-    private static final String color_default = "blanco";
-    private static final char consumo_default = 'F';
+    public static final int precio_default = 100;
+    public static final String color_default = "blanco";
+    public static final char consumo_default = 'F';
     int precio;
     String color;
     char consumo;
@@ -14,7 +14,7 @@ class electrodomesticos {
         this.precio = precio_default;
         this.color = color_default;
         this.consumo = consumo_default;
-        
+        precioFinal();
     }
 
     public electrodomesticos(int precio, String color) {
